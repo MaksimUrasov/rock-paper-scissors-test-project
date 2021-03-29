@@ -1,4 +1,19 @@
-#button, h1 {
+#button, h1  {
     display: flex;
     justify-content: center;
 }
+
+article div {
+    display: flex;
+    justify-content: center;
+}
+
+article {
+    background-image: url(https://inteng-storage.s3.amazonaws.com/images/uploads/sizes/RPS_resize_md.jpg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: cover;
+    height: 100vw;
+    
+}
+
