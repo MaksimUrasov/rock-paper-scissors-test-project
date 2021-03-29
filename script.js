@@ -13,6 +13,10 @@ const er = "Seems You have mistyped, please try again."
 const scorePElement = document.getElementById('resultScore')
 const logPElement = document.getElementById('resultLog')
 
+function visitorsPlay() {
+    visitorsText = prompt("please type 'Rock', 'Paper' or 'Scissors'")
+    return (!visitorsText) ? "EMPTY" : "visitorsText" ;
+}
 
 function computerPlay() {
     return arrayOfGestures[Math.floor(Math.random() * (arrayOfGestures.length) )]
@@ -73,15 +77,12 @@ function game() {
  
 
     for (i=1; i<6; i++) {
-        let roundResultArray = playRound( prompt("please type 'Rock', 'Paper' or 'Scissors'"), computerPlay(), i);
+        let roundResultArray = playRound( visitorsPlay(), computerPlay(), i);
         // console.log(roundResultArray);
         finalResultLog.push( "<br>", i," round. ", roundResultArray)
         // console.log(finalResultLog);
         let roundNumericalResult = parseInt(roundResultArray.slice(-1));
         finalResultScore += roundNumericalResult;
-
-            
-
     }
     
     if (finalResultScore>0 ) {
@@ -92,12 +93,11 @@ function game() {
         alert(`Ooooh, computer has won this tournament, but dont worry you can try again :)`)
         scorePElement.innerHTML = `The score: ${finalResultScore}.`
         logPElement.innerHTML = `Game log: ${finalResultLog}.`
-    } else if (finalResultScore==0 )  {
+    } else {  // finalResultScore==0 
         alert (`DRAW! \n Sometimes that happens, but dont worry you can try again :) `)
         scorePElement.innerHTML = `The score: ${finalResultScore}.`
         logPElement.innerHTML = `Game log: ${finalResultLog}.`
     }
-
 
     
 }
