@@ -11,11 +11,14 @@ const same = "siblings do not fight."
 const er = "Seems You have mistyped, please try again."
 
 const scorePElement = document.getElementById('resultScore')
-const logPElement = document.getElementById('resultLog')
+const finalLogPElement = document.getElementById('finalResultLog')
+const roundLogPElement = document.getElementById('roundResultLog')
+
 
 function visitorsPlay() {
     visitorsText = prompt("please type 'Rock', 'Paper' or 'Scissors'")
-    return (!visitorsText) ? "EMPTY" : "visitorsText" ;
+    return (!visitorsText) ? "EMPTY" : visitorsText;
+    
 }
 
 function computerPlay() {
@@ -24,6 +27,7 @@ function computerPlay() {
 
 function alertTurnResult(winOrLoose, plSel, compSel, rule, gameNumber) {
     alert(`Round ${gameNumber} out of 5.\n \n${winOrLoose} \nYour input is ${plSel}, while computer chose ${compSel}. \nThe rule is that ${rule}.`)
+    roundLogPElement.innerHTML = "irasas apie raundo rezultata"
 }
 
 function alertMistype(winOrLoose, gameNumber) {
@@ -76,7 +80,7 @@ function game() {
 
  
 
-    for (i=1; i<6; i++) {
+    for (i=1; i<4; i++) {
         let roundResultArray = playRound( visitorsPlay(), computerPlay(), i);
         // console.log(roundResultArray);
         finalResultLog.push( "<br>", i," round. ", roundResultArray)
@@ -88,15 +92,15 @@ function game() {
     if (finalResultScore>0 ) {
         alert(`YOU ARE THE WINNER!!!!!! \n\mPlease press Start to play again :)`)
         scorePElement.innerHTML = `The final score: ${finalResultScore}.`
-        logPElement.innerHTML = `Game log: ${finalResultLog}.`
+        finalLogPElement.innerHTML = `Game log: ${finalResultLog}.`
     } else if (finalResultScore<0 ) {
         alert(`Ooooh, computer has won this tournament, but dont worry you can try again :)`)
         scorePElement.innerHTML = `The score: ${finalResultScore}.`
-        logPElement.innerHTML = `Game log: ${finalResultLog}.`
+        finalLogPElement.innerHTML = `Game log: ${finalResultLog}.`
     } else {  // finalResultScore==0 
         alert (`DRAW! \n Sometimes that happens, but dont worry you can try again :) `)
         scorePElement.innerHTML = `The score: ${finalResultScore}.`
-        logPElement.innerHTML = `Game log: ${finalResultLog}.`
+        finalLogPElement.innerHTML = `Game log: ${finalResultLog}.`
     }
 
     
