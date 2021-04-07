@@ -1,19 +1,238 @@
-#button, h1  {
-    display: flex;
-    justify-content: center;
+html {
+	height: 100vh;
+	width: 100vw; 
 }
 
-article div {
-    display: flex;
-    justify-content: center;
+body {
+	background: linear-gradient(-45deg, #ff6169, #7970f8, #5bfa83, #fffc47,#ff6169);
+	background-size: 400vw 400vh;
+	/* background-repeat: no-repeat; */
+	/* height: 100%; */
+	animation: gradient-animation 15s linear alternate infinite;
+	/* width: 100vw; */
+	/* max-width: 100%; */
+	/* overflow-x:hidden; */
 }
+
+@keyframes gradient-animation {
+	0% {
+		background-position: left top;
+	}
+	100% {
+		background-position: right bottom ;
+	}
+} 
+
+
+
 
 article {
-    background-image: url(https://inteng-storage.s3.amazonaws.com/images/uploads/sizes/RPS_resize_md.jpg);
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-size: cover;
-    height: 100vw;
-    
+	text-align: center;
+	padding-top: 20vh;
+	/* height: 20vh; */
+	color: rgb(2, 65, 65);
+	font-size: 1.5em;
+} 
+
+
+article > p {
+	animation: textAppearance 2s linear ;
+	/* opacity: 0; */
+	
 }
+
+@keyframes textAppearance {
+	0% {
+		opacity: 0;
+	}	
+	50% {
+		opacity: 0;
+	}	
+	100% {
+		opacity: 1;
+	}
+}
+
+
+
+
+#startButtonContainer {
+	display: flex;  
+	justify-content: center; 
+	align-items: center;  
+	animation: startButtonAppearance 4s linear ;
+}
+  
+a {
+	font-size: 1.5rem;
+	padding: 1rem 3rem;
+	color: #f4f4f4;
+	background:  linear-gradient(45deg, rgba(255, 115, 0, 0.829), rgba(255, 0, 0, 0.904));
+	opacity: 0.8;
+	/* animation: startButtonAppearance 4s linear ; */
+}
+  
+.btn {
+	text-decoration: none;
+	border: 1px solid rgb(146, 148, 248);
+	border-radius: 5px;
+	position: relative;
+	overflow: hidden;
+	/* animation: startButtonAppearance 4s linear ; */
+}
+
+@keyframes startButtonAppearance {
+	0% {
+		opacity: 0;
+	}	
+	50% {
+		opacity: 0;
+	}	
+	100% {
+		opacity: 1;
+	}
+}
+
+  
+  .btn:hover {
+	box-shadow: 0px 0px 25px 10px rgba(146, 148, 248, 0.4);
+  }
+  
+  .btn:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -150%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+	  120deg,
+	  transparent,
+	  rgba(245, 247, 141, 0.4),
+	  transparent
+	);
+	transition: all 650ms;
+  }
+  
+  .btn:hover:before {
+	left: 150%;
+  }
+  
+
+
+  /* .gameWindow {
+	border: red solid 1px;
+	height:50vh;
+} */
+
+#gameContainer {
+	border: red solid 1px;
+	/* height:50vh; */
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: auto auto auto;
+	margin-top: 20px;
+	width:100%;
+	visibility: hidden;
+	margin-bottom: 20px;
+}
+
+#playersContainer {
+	border: rgb(208, 255, 0) solid 1px;
+	/* height:50vh; */
+	width: 50vw;
+}
+
+#gameButtonsContainer {
+	display:flex;
+	justify-content:space-around;
+}
+
+#comuputersContainer {
+	border: rgb(255, 0, 212) solid 1px;
+	/* height:50vh; */
+	width: 50vw;
+}
+
+button {
+	width: 100px;
+	height: 100px;
+	font-size: 60px;
+	transition-duration: 0.3s;
+	box-shadow: 0 0px 10px 3px rgba(0,0,0,0.2), 0px 0px 10px 3px rgba(0,0,0,0.19);
+	/* float:left; */
+	border-radius: 5px;
+	
+}
+
+	button:hover {
+		box-shadow: 0 0px 15px 10px rgba(0,0,0,0.2), 0px 0px 15px 10px rgba(0,0,0,0.19);
+		content:"Hide";
+	}
+
+	button:active {
+		background-color: rgb(153, 207, 5);
+	}
+
+#playersChoiceContainer, #computerChoiceContainer {
+	height: 90px;
+	width: 90px;
+	/* border: rgb(255, 0, 212) solid 1px; */
+	border-radius: 50%;
+	background-color: cornsilk;
+	box-shadow: 0 0px 20px 20px cornsilk;
+	/* margin:auto; */
+	font-size: 80px;
+	transition-duration: 0.8s;
+	vertical-align: middle;
+	/* padding-top: 10px; */
+	/* padding-bottom: 10px; */
+	margin: 20px;
+	visibility: hidden;
+}
+
+/* #playersChoiceContainer {
+	position: relative;
+	left: 35vw;
+}
+
+#computerChoiceContainer {
+	position: relative;
+	right: 35vw;
+} */
+
+
+#resultLogoContainer {
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 3;
+	border: rgb(255, 0, 212) solid 5px;
+	display: flex;
+	justify-content:center ;
+}
+
+#resultNumbersContainer {
+	grid-column-start: 1;
+  	grid-column-end: 3;
+  	grid-row-start: 3;
+  	grid-row-end: 4;
+	border: rgb(247, 4, 4) solid 10px;
+}
+
+
+#resultLogContainer {
+	grid-column-start: 1;
+  	grid-column-end: 3;
+  	grid-row-start: 4;
+  	grid-row-end: 5;
+	border: rgb(38, 0, 255) solid 10px;
+}
+
+#computersContainer > p {
+	height: 40px;
+}
+
+
+
 

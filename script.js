@@ -1,107 +1,124 @@
-
-const arrayOfGestures = ['Rock','Paper','Scissors'];
-
-const win = "You Win!"
-const loose = "You Loose!"
-const pr = "Paper beats Rock"
-const rs = "Rock beats Scissors"
-const sp = "Scissors beats Paper"
-const eq = "Noone wins."
-const same = "siblings do not fight."
-const er = "Seems You have mistyped, please try again."
-
-const scorePElement = document.getElementById('resultScore')
-const finalLogPElement = document.getElementById('finalResultLog')
-const roundLogPElement = document.getElementById('roundResultLog')
+const arrayOfGestures = ['rock','paper','scissors'];
 
 
-function visitorsPlay() {
-    visitorsText = prompt("please type 'Rock', 'Paper' or 'Scissors'")
-    return (!visitorsText) ? "EMPTY" : visitorsText;
+const startButtonNode = document.querySelector("a");
+const gameContainernNode = document.querySelector("#gameContainer");
+const resultNumberContainerNode = document.querySelector("#resultNumbersContainer");
+const resultLogContainerNode = document.querySelector("#resultLogContainer");
+const playersChoiceContainerNode = document.querySelector("#playersChoiceContainer");
+const computersChoiceContainerNode = document.querySelector("#computerChoiceContainer");
+const computerTextNode = document.querySelector("#computerText");
+
+let playerScore = 0
+let computerScore = 0
+
+
+const computersINode = computersChoiceContainerNode.querySelector("i");
+
+function startGameWindow() {
+    startButtonNode.textContent = "RESTART"  
+    startButtonNode.style.opacity= "0.5"
+    gameContainernNode.style.visibility= "visible";
+    resultLogContainerNode.textContent = "";
+}
+
+function startGame(playersChoose) {
+    // console.log(playersChoose)
+    playersChoiceContainerNode.style.visibility = "visible";
+    const playersINode = playersChoiceContainerNode.querySelector("i");
+
+    // remove old classes from icon node and add a new onw according to selection
+    playersINode.classList.remove(`fa-hand-paper`);
+    playersINode.classList.remove(`fa-hand-scissors`);
+    playersINode.classList.remove(`fa-hand-rock`);
+    playersINode.classList.add(`fa-hand-${playersChoose}`);
+
+
+    computersINode.classList.remove(`fa-hand-paper`);
+    computersINode.classList.remove(`fa-hand-scissors`);
+    computersINode.classList.remove(`fa-hand-rock`);
+
+    
+    
+    setTimeout(computersPlay, 300, playersChoose);
+    
+
+    
     
 }
 
-function computerPlay() {
-    return arrayOfGestures[Math.floor(Math.random() * (arrayOfGestures.length) )]
-}
+function computersPlay(playersChoose) {
 
-function alertTurnResult(winOrLoose, plSel, compSel, rule, gameNumber) {
-    alert(`Round ${gameNumber} out of 5.\n \n${winOrLoose} \nYour input is ${plSel}, while computer chose ${compSel}. \nThe rule is that ${rule}.`)
-    roundLogPElement.innerHTML = "irasas apie raundo rezultata"
-}
-
-function alertMistype(winOrLoose, gameNumber) {
-    alert(`${winOrLoose} \n \nGame round ${gameNumber} out of 5.`)
-}
-
-function playRound (playerSelection, computerSelection, numberOfGames) {
-    let roundResult = [];
-
-    if (playerSelection.toLowerCase().trim() == "rock" && computerSelection == "Paper") {
-        alertTurnResult(loose, playerSelection, computerSelection, pr ,numberOfGames)
-        return roundResult = [playerSelection, computerSelection, -1]
-
-    } else if (playerSelection.toLowerCase().trim() == "rock" && computerSelection == "Scissors") {
-        alertTurnResult(win, playerSelection, computerSelection, rs ,numberOfGames)
-        return roundResult= [playerSelection, computerSelection, 1];
-
-    } else if (playerSelection.toLowerCase().trim() == "paper" && computerSelection == "Rock") {
-        alertTurnResult(win, playerSelection, computerSelection, pr ,numberOfGames)
-        return roundResult= [playerSelection, computerSelection, 1];
-
-
-    } else if (playerSelection.toLowerCase().trim() == "paper" && computerSelection == "Scissors") {
-        alertTurnResult(loose, playerSelection, computerSelection, sp ,numberOfGames)
-        return roundResult=[playerSelection, computerSelection, -1];
-
-    } else if (playerSelection.toLowerCase().trim() == "scissors" && computerSelection == "Rock") {
-        alertTurnResult(loose, playerSelection, computerSelection, rs ,numberOfGames)
-        return roundResult=[playerSelection, computerSelection, -1];
-
-    } else if (playerSelection.toLowerCase().trim() == "scissors" && computerSelection == "Paper") {
-        alertTurnResult(win, playerSelection, computerSelection, sp ,numberOfGames)
-        return roundResult=[playerSelection, computerSelection, 1];
-
-    } else if (playerSelection.toLowerCase().trim() == computerSelection.toLowerCase() ) {  
-        alertTurnResult(eq, playerSelection, computerSelection, same ,numberOfGames)
-        return roundResult= [playerSelection, computerSelection, 0];
-
-    } else {
-        alertMistype(er, numberOfGames)
-        return roundResult = [playerSelection, computerSelection, -1]
-    }
+    let randomComputersChoose = arrayOfGestures[Math.floor(Math.random() * 3 )]
+    computersChoiceContainerNode.style.visibility = "visible";
+    computerTextNode.textContent = `Computer chose ${randomComputersChoose}`
     
- }
 
+    // remove old classes from icon node and add a new onw according to selection
+    
+    computersINode.classList.add(`fa-hand-${randomComputersChoose}`);
+   
+    evaluatePlayDifference(playersChoose,randomComputersChoose)
+    
+}
 
-function game() {
-    let finalResultScore = 0;
-    let finalResultLog = [];
+function evaluatePlayDifference(plr,cmp) {
+    // console.log(plr,cmp)
 
  
+    if (plr == "rock" && cmp == "paper") {
+        computerScore += 1;
+        changeBackgroundColor(1)
 
-    for (i=1; i<4; i++) {
-        let roundResultArray = playRound( visitorsPlay(), computerPlay(), i);
-        // console.log(roundResultArray);
-        finalResultLog.push( "<br>", i," round. ", roundResultArray)
-        // console.log(finalResultLog);
-        let roundNumericalResult = parseInt(roundResultArray.slice(-1));
-        finalResultScore += roundNumericalResult;
+    } else if (plr == "rock" && cmp == "scissors") {
+        playerScore += 1;
+        changeBackgroundColor(0)
+
+    } else if (plr == "paper" && cmp == "rock") {
+        playerScore += 1;
+        changeBackgroundColor(0)
+
+    } else if (plr == "paper" && cmp == "scissors") {
+        computerScore += 1;
+        changeBackgroundColor(1)
+
+    } else if (plr == "scissors" && cmp == "rock") {
+        computerScore += 1;
+        changeBackgroundColor(1)
+
+    } else if (plr == "scissors" && cmp == "paper") {
+        playerScore += 1;
+        changeBackgroundColor(0)
+        
+    } else if (plr == cmp) {  
+        changeBackgroundColor(2)
+        
+
+    } 
+
+    
+    // console.log(playerScore, computerScore, resultNumberContainerNode)
+    resultNumberContainerNode.textContent = `${playerScore} : ${computerScore}`;
+
+}
+
+function changeBackgroundColor(result) {
+    if (result == 0) {
+        playersChoiceContainerNode.style.backgroundColor = "red";
+        playersChoiceContainerNode.style.boxShadow = "0 0px 20px 20px red";
+        computersChoiceContainerNode.style.backgroundColor = "green";
+        computersChoiceContainerNode.style.boxShadow = "0 0px 20px 20px green";
+    } else if ( result == 1 ){
+        playersChoiceContainerNode.style.backgroundColor = "green";
+        playersChoiceContainerNode.style.boxShadow = "0 0px 20px 20px green";
+        computersChoiceContainerNode.style.backgroundColor = "red";
+        computersChoiceContainerNode.style.boxShadow = "0 0px 20px 20px red";
+    } else {
+        playersChoiceContainerNode.style.backgroundColor = "orange";
+        playersChoiceContainerNode.style.boxShadow = "0 0px 20px 20px orange";
+        computersChoiceContainerNode.style.backgroundColor = "orange";
+        computersChoiceContainerNode.style.boxShadow = "0 0px 20px 20px orange";
     }
     
-    if (finalResultScore>0 ) {
-        alert(`YOU ARE THE WINNER!!!!!! \n\mPlease press Start to play again :)`)
-        scorePElement.innerHTML = `The final score: ${finalResultScore}.`
-        finalLogPElement.innerHTML = `Game log: ${finalResultLog}.`
-    } else if (finalResultScore<0 ) {
-        alert(`Ooooh, computer has won this tournament, but dont worry you can try again :)`)
-        scorePElement.innerHTML = `The score: ${finalResultScore}.`
-        finalLogPElement.innerHTML = `Game log: ${finalResultLog}.`
-    } else {  // finalResultScore==0 
-        alert (`DRAW! \n Sometimes that happens, but dont worry you can try again :) `)
-        scorePElement.innerHTML = `The score: ${finalResultScore}.`
-        finalLogPElement.innerHTML = `Game log: ${finalResultLog}.`
-    }
 
-    
 }
