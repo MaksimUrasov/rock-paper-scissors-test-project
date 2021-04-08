@@ -1,17 +1,12 @@
 html {
 	height: 100vh;
-	width: 100vw; 
+	width: 100%; 
 }
 
 body {
 	background: linear-gradient(-45deg, #ff6169, #7970f8, #5bfa83, #fffc47,#ff6169);
 	background-size: 400vw 400vh;
-	/* background-repeat: no-repeat; */
-	/* height: 100%; */
 	animation: gradient-animation 15s linear alternate infinite;
-	/* width: 100vw; */
-	/* max-width: 100%; */
-	/* overflow-x:hidden; */
 }
 
 @keyframes gradient-animation {
@@ -28,7 +23,7 @@ body {
 
 article {
 	text-align: center;
-	padding-top: 20vh;
+	padding-top: 15vh;
 	/* height: 20vh; */
 	color: rgb(2, 65, 65);
 	font-size: 1.5em;
@@ -69,16 +64,15 @@ a {
 	color: #f4f4f4;
 	background:  linear-gradient(45deg, rgba(255, 115, 0, 0.829), rgba(255, 0, 0, 0.904));
 	opacity: 0.8;
-	/* animation: startButtonAppearance 4s linear ; */
 }
   
 .btn {
 	text-decoration: none;
 	border: 1px solid rgb(146, 148, 248);
+
 	border-radius: 5px;
 	position: relative;
 	overflow: hidden;
-	/* animation: startButtonAppearance 4s linear ; */
 }
 
 @keyframes startButtonAppearance {
@@ -119,39 +113,44 @@ a {
   }
   
 
-
-  /* .gameWindow {
-	border: red solid 1px;
-	height:50vh;
-} */
-
 #gameContainer {
-	border: red solid 1px;
-	/* height:50vh; */
+	/* border: red solid 1px; */
 	display: grid;
 	grid-template-columns: 50% 50%;
 	grid-template-rows: auto auto auto;
-	margin-top: 20px;
-	width:100%;
+	margin-top: 50px;
+	margin-bottom: auto; /* ths one is needed to fill the vw, to avoid background corner show problem*/
+	min-width: 500px;
+	width:60vw;
+	margin-left: auto;
+	margin-right: auto;
 	visibility: hidden;
 	margin-bottom: 20px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+	border-radius: 10px;
 }
 
 #playersContainer {
-	border: rgb(208, 255, 0) solid 1px;
+	/* border: rgb(208, 255, 0) solid 1px; */
 	/* height:50vh; */
-	width: 50vw;
+	/* width: 50vw; */
 }
 
 #gameButtonsContainer {
 	display:flex;
-	justify-content:space-around;
+	justify-content:flex-end;
+	padding-right: 10%;
 }
 
 #comuputersContainer {
-	border: rgb(255, 0, 212) solid 1px;
-	/* height:50vh; */
+	border: rgb(255, 0, 212) solid 10px; 
 	width: 50vw;
+}
+
+#computersContainer > p {
+	height: 40px;
+	text-align: left;
+	padding-left: 10%;
 }
 
 button {
@@ -160,8 +159,8 @@ button {
 	font-size: 60px;
 	transition-duration: 0.3s;
 	box-shadow: 0 0px 10px 3px rgba(0,0,0,0.2), 0px 0px 10px 3px rgba(0,0,0,0.19);
-	/* float:left; */
 	border-radius: 5px;
+	margin: 10px;
 	
 }
 
@@ -181,57 +180,62 @@ button {
 	border-radius: 50%;
 	background-color: cornsilk;
 	box-shadow: 0 0px 20px 20px cornsilk;
-	/* margin:auto; */
 	font-size: 80px;
-	transition-duration: 0.8s;
+	transition-duration: 0.7s;
 	vertical-align: middle;
-	/* padding-top: 10px; */
-	/* padding-bottom: 10px; */
 	margin: 20px;
 	visibility: hidden;
 }
-
-/* #playersChoiceContainer {
-	position: relative;
-	left: 35vw;
-}
-
-#computerChoiceContainer {
-	position: relative;
-	right: 35vw;
-} */
-
 
 #resultLogoContainer {
 	grid-column-start: 1;
 	grid-column-end: 3;
 	grid-row-start: 2;
 	grid-row-end: 3;
-	border: rgb(255, 0, 212) solid 5px;
+	/* border: rgb(255, 0, 212) solid 5px; */
 	display: flex;
 	justify-content:center ;
 }
 
-#resultNumbersContainer {
+
+
+
+	/*  below are the properties of shining numbers of result */
+	
+	:root {
+		--shadow-color: #FF9E9E;
+		--shadow-color-light: white;
+	}
+
+	#resultNumbersContainer {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		grid-row-start: 3;
+		grid-row-end: 4;
+		/* border: rgb(38, 0, 255) solid 10px; */
+		transition-duration: 0.5s;
+		color: white;
+		font-size: 65px;
+		font-family: "Archivo Black", "Archivo", sans-serif;
+		text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+			  0 0 5px var(--shadow-color-light), 0 0 15px var(--shadow-color-light), 0 0 25px var(--shadow-color-light),
+			  0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 60px var(--shadow-color), 0 0 80px var(--shadow-color), 0 0 110px var(--shadow-color), 0 0 210px var(--shadow-color);
+			
+	}
+	
+
+
+/*   this one wanted to use for logging the game history.
+#resultLogContainer  {
 	grid-column-start: 1;
-  	grid-column-end: 3;
-  	grid-row-start: 3;
-  	grid-row-end: 4;
-	border: rgb(247, 4, 4) solid 10px;
-}
+	grid-column-end: 3;
+	grid-row-start: 4;
+	grid-row-end: 5;
+	border: rgb(247, 4, 4) solid 10px; 
+	transition-duration: 0.2s;
+} */
 
 
-#resultLogContainer {
-	grid-column-start: 1;
-  	grid-column-end: 3;
-  	grid-row-start: 4;
-  	grid-row-end: 5;
-	border: rgb(38, 0, 255) solid 10px;
-}
-
-#computersContainer > p {
-	height: 40px;
-}
 
 
 

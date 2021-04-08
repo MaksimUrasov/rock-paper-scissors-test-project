@@ -1,87 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>ROCK PAPER SCISSORS</title>
-<link rel="stylesheet" href="styles.css">
-<script src="https://kit.fontawesome.com/3306c841ed.js" crossorigin="anonymous"></script>
+    <head>
+    <title>ROCK PAPER SCISSORS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
 
-</head>
-<body>
-    <article>
-        <h1>Who is smarter, You or computer?</h1>
-        <p>Lets play PAPER-ROCK-SCISSORS game to check!</p>
-        <!-- <button class="startButton" onclick="playGameWindow()">START</button> -->
-
-        
-
-        <!-- <div id="button">
-            <button onclick="palyAllGame()">Start game</button>
-        </div>
-        <div> 
-            <p id="finalResultScore"></p> 
-        </div>
-        <div>
-            <p id="roundResultLog"></p>
-        </div>
-        <div>
-            <p id="finalResultLog"></p>
-        </div> -->
-   
-
-        <!-- <div class="buttonsDiv">
-            <button id="rock">ROCK</button>
-            <button id="paper">PAPER</button>
-            <button id="scissors">SCISSORS</button>
-
-        </div> -->
-
-        <div id="startButtonContainer">
-            <a href="#" onclick="startGameWindow()" class="btn">START</a>
-        </div>
-
-        <div id="gameContainer">
-
-            <div id="playersContainer">
-                <div id="gameButtonsContainer">
-                    <button onclick="startGame('scissors')"  id="scissors" title="Scissors"><i class="far fa-hand-scissors"></i></button>
-                    <button onclick="startGame('rock')" id="rock" title="Rock or Stone"><i class="far fa-hand-rock"></i></button>
-                    <button onclick="startGame('paper')" id="paper" title="Paper (not toilet paper!)"><i class="far fa-hand-paper"></i></button>
-
-                </div>
+    </head>
+    <body>
+        <article>
+            <h1>Who is smarter, You or computer?</h1>
+            <p>Lets play PAPER-ROCK-SCISSORS game to check!</p>
+    
+            <div id="startButtonContainer">
+                <a href="#" id="startGameWindow" class="btn">START</a>
             </div>
 
-            <div id="computersContainer">
-                <p><i class="fas fa-robot"></i></p>
-                <p id="computerText"> Computer has already made his choice, please make yours</p>
-            </div>
+            <div id="gameContainer">
 
-            <div id="resultLogoContainer">
-                <div id="playersChoiceContainer">
-                    <i class="fas"></i>
+                <div id="playersContainer">
+                    <div id="gameButtonsContainer">
+                        <button onclick="startGame('scissors')" id="scissors" title="Scissors"><i class="far fa-hand-scissors"></i></button>
+                        <button onclick="startGame('rock')"id="rock" title="Rock or Stone"><i class="far fa-hand-rock"></i></button>
+                        <button onclick="startGame('paper')"id="paper" title="Paper (not toilet paper!)"><i class="far fa-hand-paper"></i></button>
+
+                    </div>
                 </div>
 
-                <div id="computerChoiceContainer">
-                    <i class="fas"></i>             
+                <div id="computersContainer">
+                    <p><i class="fas fa-robot"></i></p>
+                    <p id="computerText"> </p>
                 </div>
+
+                <div id="resultLogoContainer">
+                    <div id="playersChoiceContainer">
+                        <i class="fas"></i>
+                    </div>
+
+                    <div id="computerChoiceContainer">
+                        <i class="fas"></i>             
+                    </div>
+                </div>
+
+                <div id="resultNumbersContainer">
+                        some result will be there
+                </div>
+
+                <!-- <div id="resultLogContainer">
+                        some log will be there
+                </div> -->
+
+
+
             </div>
 
-            <div id="resultNumbersContainer">
-                    some result
-                <div id="yourScoreContainer"></div>
-                <div id="computerScoreContainer"></div>
-            </div>
-
-            <div id="resultLogContainer">
- some log
-            </div>
-
-
-
-        </div>
-
-    </article>
-   
-
-</body>
-<script src="script.js"></script>
+        </article>
+    
+    <script src="https://kit.fontawesome.com/3306c841ed.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    </body>
 </html> 
